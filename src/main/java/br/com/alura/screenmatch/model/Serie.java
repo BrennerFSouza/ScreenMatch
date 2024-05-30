@@ -1,7 +1,9 @@
 package br.com.alura.screenmatch.model;
 
+import com.darkprograms.speech.translator.GoogleTranslate;
 import com.fasterxml.jackson.annotation.JsonAlias;
 
+import java.io.IOException;
 import java.util.Optional;
 import java.util.OptionalDouble;
 
@@ -21,7 +23,11 @@ public class Serie {
         this.genero = Categoria.fromString(dadosSerie.genero().split(",")[0].trim());
         this.atores = dadosSerie.atores();
         this.poster = dadosSerie.poster();
-        this.sinopse = dadosSerie.sinopse();
+        try {
+            this.sinopse = GoogleTranslate.translate("pt", dadosSerie.sinopse()) ;
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
 
     }
 

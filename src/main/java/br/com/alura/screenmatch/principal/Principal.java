@@ -5,7 +5,9 @@ import br.com.alura.screenmatch.model.DadosTemporada;
 import br.com.alura.screenmatch.model.Serie;
 import br.com.alura.screenmatch.services.ConsumoAPI;
 import br.com.alura.screenmatch.services.ConverteDados;
+import com.darkprograms.speech.translator.GoogleTranslate;
 
+import java.io.IOException;
 import java.util.*;
 import java.util.stream.Collectors;
 
@@ -20,8 +22,8 @@ public class Principal {
 
     public void exibeMenu() {
         var opcao = -1;
-        while (opcao != 0) {
 
+        while (opcao != 0) {
 
             var menu = """
                     1 - Buscar séries
