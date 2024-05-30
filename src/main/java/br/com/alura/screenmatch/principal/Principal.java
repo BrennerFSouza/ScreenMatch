@@ -72,6 +72,9 @@ public class Principal {
                 case 8:
                     buscarPorNumeroDeTemporadasEAvaliacao();
                     break;
+                case 9:
+                    buscarEpisodioPorTrecho();
+                    break;
                 case 0:
                     System.out.println("Saindo...");
                     break;
@@ -201,5 +204,16 @@ public class Principal {
                         ", Total de Temporadas = " + s.getTotalTemporadas()
                 )
         );
+    }
+
+    private void buscarEpisodioPorTrecho() {
+        System.out.println("Digite o Trecho:");
+        var trechoEpisodio = leitura.nextLine();
+
+        List<Episodio> episodiosEncontrados = repositorio.episodiosPorTrecho(trechoEpisodio);
+        episodiosEncontrados.forEach(e ->
+                System.out.printf("Série: %s, Temporada %s - Episódio %s - %s\n",
+                        e.getSerie().getTitulo(), e.getTemporada(),
+                        e.getNumeroEpisodio(), e.getTitulo()));
     }
 }
