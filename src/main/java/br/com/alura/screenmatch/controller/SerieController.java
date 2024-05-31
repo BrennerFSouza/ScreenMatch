@@ -22,6 +22,11 @@ public class SerieController {
         return servico.obterTodasAsSeries();
     }
 
+    @GetMapping("/categoria/{genero}")
+    public List<SerieDTO> obterSeriesPorGenero(@PathVariable String genero){
+        return servico.obterSeriesPorGenero(genero);
+    }
+
     @GetMapping("/top5")
     public List<SerieDTO> obterTop5Series() {
         return servico.obterTop5Series();
@@ -41,5 +46,10 @@ public class SerieController {
     public List<EpisodioDTO> obterTodasTemporadas(@PathVariable Long id){
         return servico.obterTodasTemporadas(id);
     }
+    @GetMapping("/{id}/temporadas/{numero}")
+    public List<EpisodioDTO> obterEpisodiosPorTemporada(@PathVariable Long id, @PathVariable Long numero){
+        return servico.obterEpisodiosPorTemporada(id,numero);
+    }
+
 
 }
