@@ -11,6 +11,6 @@ Projeto desenvolvido no terceiro curso da formação Avançando com Java da Alur
 - Entender a estrutura MVC no desenvolvimento de aplicações Web;
 - Criar e mapear rotas utilizando as anotações do Spring;
 - Utilizar boas práticas e entender o conceito de DTO (Data Transfer Object); 
-- Conectar dados disponibilizados pelo back-end à uma aplicação front-end, disponibilizada nesse [link](https://github.com/jacqueline-oliveira/3356-java-web-front) 
+- Conectar dados disponibilizados pelo back-end à uma aplicação front-end, disponibilizada nesse [link](https://github.com/BrennerFSouza/ScreenMatch_FrontEnd.git)
 - Tratar erros de CORS na disponibilização de dados;
 - Fornecer uma experiência fullstack, demonstrando o fluxo ponta a ponta da aplicação.
