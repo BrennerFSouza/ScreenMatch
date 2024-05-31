@@ -4,6 +4,7 @@ import br.com.alura.screenmatch.dto.SerieDTO;
 import br.com.alura.screenmatch.services.SerieService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
@@ -27,6 +28,11 @@ public class SerieController {
 
     @GetMapping("/lancamentos")
     public List<SerieDTO> obterLancamentos(){
-        return servico.obterTop5Series();
+        return servico.obterLancamentos();
+    }
+
+    @GetMapping("/{id}")
+    public SerieDTO obterPorId(@PathVariable Long id){
+        return servico.buscarPorId(id);
     }
 }
