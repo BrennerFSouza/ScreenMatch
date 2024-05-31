@@ -27,7 +27,6 @@ public class SerieService {
     }
 
 
-
     public List<SerieDTO> obterTop5Series() {
         return converteDados(repositorio.findTop5ByOrderByAvaliacaoDesc());
     }
@@ -35,7 +34,6 @@ public class SerieService {
     public List<SerieDTO> obterLancamentos() {
         return converteDados(repositorio.encontrarSeriesAtualizadasRecentes());
     }
-
 
 
     public SerieDTO buscarPorId(Long id) {
@@ -68,7 +66,7 @@ public class SerieService {
     }
 
     public List<EpisodioDTO> obterEpisodiosPorTemporada(Long id, Long numero) {
-        return repositorio.obterEpisodiosPorTemporada(id,numero).stream()
+        return repositorio.obterEpisodiosPorTemporada(id, numero).stream()
                 .map(e -> new EpisodioDTO(e.getTemporada(), e.getNumeroEpisodio(), e.getTitulo()))
                 .collect(Collectors.toList());
     }
@@ -86,4 +84,24 @@ public class SerieService {
                 .collect(Collectors.toList());
 
     }
+
+
+    public List<EpisodioDTO> obterTop5Episodios(Long id) {
+        Optional<Serie> serie = repositorio.findById(id);
+        if (serie.isPresent()) {
+            Serie s = serie.get();
+            return repositorio.topEpisodiosPorSerie(s).stream()
+                    .map(e -> new EpisodioDTO(
+                            e.getTemporada(),
+                            e.getNumeroEpisodio(),
+                            e.getTitulo()
+                    ))
+                    .collect(Collectors.toList());
+
+        } else {
+            return null;
+        }
+    }
+
+
 }

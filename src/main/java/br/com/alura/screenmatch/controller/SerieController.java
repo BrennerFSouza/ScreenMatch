@@ -23,7 +23,7 @@ public class SerieController {
     }
 
     @GetMapping("/categoria/{genero}")
-    public List<SerieDTO> obterSeriesPorGenero(@PathVariable String genero){
+    public List<SerieDTO> obterSeriesPorGenero(@PathVariable String genero) {
         return servico.obterSeriesPorGenero(genero);
     }
 
@@ -33,23 +33,29 @@ public class SerieController {
     }
 
     @GetMapping("/lancamentos")
-    public List<SerieDTO> obterLancamentos(){
+    public List<SerieDTO> obterLancamentos() {
         return servico.obterLancamentos();
     }
 
     @GetMapping("/{id}")
-    public SerieDTO obterPorId(@PathVariable Long id){
+    public SerieDTO obterPorId(@PathVariable Long id) {
         return servico.buscarPorId(id);
     }
 
     @GetMapping("/{id}/temporadas/todas")
-    public List<EpisodioDTO> obterTodasTemporadas(@PathVariable Long id){
+    public List<EpisodioDTO> obterTodasTemporadas(@PathVariable Long id) {
         return servico.obterTodasTemporadas(id);
     }
+
     @GetMapping("/{id}/temporadas/{numero}")
-    public List<EpisodioDTO> obterEpisodiosPorTemporada(@PathVariable Long id, @PathVariable Long numero){
-        return servico.obterEpisodiosPorTemporada(id,numero);
+    public List<EpisodioDTO> obterEpisodiosPorTemporada(@PathVariable Long id, @PathVariable Long numero) {
+        return servico.obterEpisodiosPorTemporada(id, numero);
     }
+    @GetMapping("/{id}/temporadas/top")
+    public List<EpisodioDTO> obterTop5Episodios(@PathVariable Long id){
+        return servico.obterTop5Episodios(id);
+    }
+
 
 
 }
