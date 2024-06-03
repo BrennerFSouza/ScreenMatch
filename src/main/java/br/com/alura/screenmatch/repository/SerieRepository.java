@@ -2,6 +2,7 @@ package br.com.alura.screenmatch.repository;
 
 import br.com.alura.screenmatch.model.Categoria;
 import br.com.alura.screenmatch.model.Episodio;
+import br.com.alura.screenmatch.model.Frase;
 import br.com.alura.screenmatch.model.Serie;
 import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
@@ -42,4 +43,6 @@ public interface SerieRepository extends JpaRepository<Serie, Long> {
 
     @Query("SELECT e FROM Serie s JOIN s.episodios e WHERE s.id = :id AND e.temporada = :numero")
     List<Episodio> obterEpisodiosPorTemporada(Long id, Long numero);
+    @Query("SELECT f FROM Frase f order by function('RANDOM') LIMIT 1")
+    Frase obterFraseAleatoria();
 }
